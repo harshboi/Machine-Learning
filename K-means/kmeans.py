@@ -35,7 +35,7 @@ def SSE(clusters, centers):
     try:
         for i in range (len(clusters)): 
             for j in range (len(clusters[i])):
-                pdb.set_trace()
+                # pdb.set_trace()
                 summation += euclidean_distance(centers[i], clusters[i][j])
         return summation
     except Exception as e:
@@ -72,7 +72,7 @@ for i in range(1,k):
 # pdb.set_trace()
 index = 0
 classification = 0
-loss = 999999999
+loss = None
 convergence = 0
 
 try:
@@ -86,13 +86,13 @@ try:
                 if (eval_dist < distance): # update if distance is smaller
                     distance = eval_dist
                     new_index = j
-            clusters[new_index].append([input[i]])                # GOAL: [[[1,2],[3,4]],[[5,6],[7,8]]]
-            pdb.set_trace()
+            clusters[new_index].append(input[i])                # GOAL: [[[1,2],[3,4]],[[5,6],[7,8]]]
+        # pdb.set_trace()
         calc_loss = SSE(clusters, centers)
-        if (loss <= calc_loss):
+        if (type(loss) != type(None) and loss <= calc_loss):
             convergence = 1
         else:
-            print ("Next Iteration")
+            print ("Next Iteration, loss is ", loss)
             loss = calc_loss
         for i in range (len(centers)):
             centers[i] = center(clusters[i])
@@ -105,7 +105,7 @@ except Exception as e:
     pdb.set_trace()
 
 
-convergence = 0
+# convergence = 0
 
 pdb.set_trace()
-# print(input.shape)
+print(input.shape)
