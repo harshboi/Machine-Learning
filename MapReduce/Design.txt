@@ -1,0 +1,32 @@
+The programs are written in Python 2.7
+
+Compile code:
+hadoop jar /usr/lib/hadoop-mapreduce/hadoop-streaming.jar \
+-mapper "python files/mapper.py" \
+-reducer "python files/reducer.py" \
+-input Desktop/inputt \
+-output Desktop/output
+
+As alot of data os not being passed, an alternate test for these can be:
+For Program A:
+cat input1 | ./mapper.py | reducer.py
+For Program B:
+cat input2 | ./mapper.py | reducer.py
+
+
+Part a of the assignment has a time complexity of O(n) where n is the number of words.
+This will be infinitely scalable and will work with multiple clusters as the mappers and
+reducers are set properly (where by infinite I mean till the limitation of current day hardware). Mappers take a word and concatenate 1 to the side. Reducers add the 
+word to a dictionary and multiple hits in the dictionary show that the word has been included 
+multiple times and hence we increment the value for every occurence by 1 by incrementing the value
+of the value of the word (key) in the dictionary.
+
+Part B of the assignment will have a time complexity of O(NKJ) where n is the number of lines, k is
+the number of words and j is the number of characters in a word. The mapper for this is tricky as
+passing in combinations randodmly will not work. Strings for the combination of items must be in the same order
+i.e. (Apple, Pear) and (Pear, Apple) will be regarded as different. To fix this I used an algorithm where
+I sort the pair by the smaller word followed by the larger one and in the case of both the words being equal,
+I sort them in lexographical order (the J will be the length of the word/sentence in this case) ensuring that 
+different nodes will all send data in a consistent way. The reducer will unpack these and put them in a dictionary
+looking for the number of occurences like in the previous example. Hence this should also be infinitely scalable (
+where by infinite I mean till the limitation of current day hardware)
