@@ -1,6 +1,6 @@
-# H1 The Great Host/Lexical URL Reputation Bake-off ™
+# The Great Host/Lexical URL Reputation Bake-off ™
 
-Note: Read Writeup for detailed eexplanation on solution
+### Read DATDA HW4.pdf Writeup for detailed explanation on solution
 
 Summary
 Modern URL classification systems can classify most URLs without ever needing URL content. This is important because it is far less expensive to classify a URL without having to crawl, download, store, and analyze content. Furthermore, it is often impossible to access content of a URL due to single-shot and auto-cloaking malicious websites.
