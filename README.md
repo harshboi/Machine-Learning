@@ -1,3 +1,2 @@
-# Machine-Learning
-
-A few ML Projects I have worked on
+# Data-Science
+A few interesting data science projects I have worked on
