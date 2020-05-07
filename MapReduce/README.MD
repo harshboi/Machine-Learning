@@ -7,7 +7,7 @@ hadoop jar /usr/lib/hadoop-mapreduce/hadoop-streaming.jar \
 -input Desktop/inputt \
 -output Desktop/output
 
-As alot of data os not being passed, an alternate test for these can be:
+As alot of data is not being passed, an alternate test for these can be:
 For Program A:
 cat input1 | ./mapper.py | reducer.py
 For Program B:
